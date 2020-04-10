@@ -1,24 +1,23 @@
-// In App.js in a new project
+import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Setup from './screens/Setup';
-import FinalBell from './screens/FinalBell';
-import Scoring from './screens/Scoring';
+import reducer from './store/reducers';
+import Router from './Router';
 
-const Stack = createStackNavigator();
+const initialState = {
+  fighterOneName: '',
+  fighterTwoName: '',
+  fighterOneRoundScore: 0,
+  fighterTwoRoundScore: 0,
+  fighterOneTotal: 0,
+  fighterTwoTotal: 0,
+  currentRound: 1,
+  fightLength: 12
+};
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Setup" component={Setup} />
-        <Stack.Screen name="Scoring" component={Scoring} />
-        <Stack.Screen name="FinalBell" component={FinalBell} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+const store = createStore(reducer, initialState);
+
+const App = () => <Provider store={store}><Router /></Provider>;
 
 export default App;
