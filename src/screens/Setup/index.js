@@ -3,27 +3,34 @@ import { View, Text, Button, TextInput, Picker, Platform } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './style';
-import { setRound } from '../../store/actions';
+
+import {
+  setRound,
+  setFighterOneName,
+  setFighterTwoName
+}
+  from '../../store/actions';
 
 const Setup = ({
   navigation,
   fighterOneName,
   fighterTwoName,
   fightLength,
-  setRound
+  setRound,
+  setFighterOneName,
+  setFighterTwoName
 }) =>
   <View style={styles.container}>
     <Text>Enter Fight Details</Text>
-    <TextInput placeholder="Fighter One Name" value={fighterOneName} />
+    <TextInput placeholder="Fighter One Name" value={fighterOneName} onChangeText={text => setFighterOneName(text)} />
     <Text>V</Text>
-    <TextInput placeholder="Fighter Two Name" value={fighterTwoName} />
+    <TextInput placeholder="Fighter Two Name" value={fighterTwoName} onChangeText={text => setFighterTwoName(text)} />
 
-    {/* <TextInput placeholder="Number of Rounds" value={fightLength} keyboardType="numeric" /> */}
     <Text>Number of Rounds:</Text>
     <Picker
       selectedValue={fightLength}
       style={{ height: Platform.OS === 'ios' ? 150 : 50, width: 80 }}
-      itemStyle={{height: 150}}
+      itemStyle={{ height: 150 }}
       onValueChange={selectedRound => setRound(selectedRound)}
     >
       <Picker.Item label="1" value={1} />
@@ -47,6 +54,8 @@ const mapStateToProps = ({ fighterOneName, fighterTwoName, fightLength }) => ({ 
 
 const mapDispatchToProps = dispatch => ({
   setRound: selectedRound => dispatch(setRound(selectedRound)),
+  setFighterOneName: nameOne => dispatch(setFighterOneName(nameOne)),
+  setFighterTwoName: nameTwo => dispatch(setFighterTwoName(nameTwo)),
 });
 
 const SetupContainer = connect(mapStateToProps, mapDispatchToProps)(Setup);
