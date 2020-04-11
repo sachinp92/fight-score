@@ -1,0 +1,3 @@
+export const SET_ROUND = 'SET_ROUND';
+export const SET_FIGHTER_ONE_NAME = 'SET_FIGHTER_ONE_NAME';
+export const SET_FIGHTER_TWO_NAME = 'SET_FIGHTER_TWO_NAME';

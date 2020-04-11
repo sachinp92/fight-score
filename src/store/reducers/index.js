@@ -1,23 +1,23 @@
+import { SET_ROUND, SET_FIGHTER_ONE_NAME, SET_FIGHTER_TWO_NAME } from '../types';
+
 const initialState = {
   fighterOneName: '',
   fighterTwoName: '',
-  fighterOneRoundScore: 0,
-  fighterTwoRoundScore: 0,
+  fighterOneRoundScores: [],
+  fighterTwoRoundScores: [],
   fighterOneTotal: 0,
   fighterTwoTotal: 0,
   currentRound: 1,
   fightLength: 12
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'hello':
-
-      break;
-
-    default:
-      return state;
+const reducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case SET_ROUND: return { ...state, fightLength: payload };
+    case SET_FIGHTER_ONE_NAME: return { ...state, fighterOneName: payload };
+    case SET_FIGHTER_TWO_NAME: return { ...state, fighterTwoName: payload };
+    default: return state;
   }
-}
+};
 
 export default reducer;
