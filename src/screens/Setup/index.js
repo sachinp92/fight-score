@@ -1,20 +1,21 @@
 import React from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './style';
 import { setRound, setFighterOneName, setFighterTwoName } from '../../store/actions';
 import RoundPicker from '../../components/RoundPicker';
+import StartFightButton from '../../components/StartFightButton';
 
 const Setup = ({ navigation, fighterOneName, fighterTwoName, setFighterOneName, setFighterTwoName }) =>
   <View style={styles.container}>
     <Text>Enter Fight Details</Text>
-    <TextInput placeholder="Fighter One Name" value={fighterOneName} onChangeText={text => setFighterOneName(text)}  />
+    <TextInput placeholder="Fighter One Name" value={fighterOneName} onChangeText={text => setFighterOneName(text)} />
     <Text>V</Text>
-    <TextInput placeholder="Fighter Two Name" value={fighterTwoName} onChangeText={text => setFighterTwoName(text)}  />
+    <TextInput placeholder="Fighter Two Name" value={fighterTwoName} onChangeText={text => setFighterTwoName(text)} />
     <Text>Number of Rounds:</Text>
     <RoundPicker />
-    <Button title="Start Fight" onPress={() => { fighterOneName === '' || fighterTwoName === '' ? alert('Please enter the name of both fighters') : navigation.navigate('Scoring')}} />
+    <StartFightButton fighterOne={fighterOneName} fighterTwo={fighterTwoName} startFight={() => navigation.navigate('Scoring')} />
   </View>;
 
 const mapStateToProps = ({ fighterOneName, fighterTwoName, fightLength }) => ({ fighterOneName, fighterTwoName, fightLength });
