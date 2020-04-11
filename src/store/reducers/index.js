@@ -8,7 +8,7 @@ const initialState = {
   fighterOneTotal: 0,
   fighterTwoTotal: 0,
   currentRound: 1,
-  fightLength: 12
+  fightLength: 5
 };
 
 const reducer = (state = initialState, { type, payload }) => {
