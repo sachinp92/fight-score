@@ -1,5 +1,6 @@
 import React from 'react';
-import { Picker, Platform, Text } from 'react-native';
+import { Platform, Text } from 'react-native';
+import { Picker } from '@react-native-community/picker';
 import { connect } from 'react-redux';
 
 import { setRounds } from '../store/actions';

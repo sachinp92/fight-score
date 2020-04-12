@@ -1,5 +1,6 @@
 import React from 'react';
-import { Picker, Platform } from 'react-native';
+import { Platform } from 'react-native';
+import { Picker } from '@react-native-community/picker';
 import { connect } from 'react-redux';
 
 import { setFighterOneRoundScore, setFighterTwoRoundScore } from '../store/actions';
@@ -12,7 +13,7 @@ const RoundScorePicker = ({ fighter, setFighterOneRoundScore, setFighterTwoRound
     onValueChange={fighter === 1 ?
       fighterOneScore => setFighterOneRoundScore(fighterOneScore) :
       fighterTwoScore => setFighterTwoRoundScore(fighterTwoScore)
-  }>
+    }>
     <Picker.Item label="6" value={6} />
     <Picker.Item label="7" value={7} />
     <Picker.Item label="8" value={8} />
