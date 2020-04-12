@@ -4,23 +4,7 @@ import { connect } from 'react-redux';
 
 import { setFighterOneRoundScore, setFighterTwoRoundScore } from '../store/actions';
 
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-// Conditionally use pieces of state based on which fighter is being scored
-
-const FightLengthPicker = ({ fighter, setFighterOneRoundScore, setFighterTwoRoundScore, fighterOneCurrentRound, fighterTwoCurrentRound }) =>
+const RoundScorePicker = ({ fighter, setFighterOneRoundScore, setFighterTwoRoundScore, fighterOneCurrentRound, fighterTwoCurrentRound }) =>
   <Picker
     selectedValue={fighter === 1 ? fighterOneCurrentRound : fighterTwoCurrentRound}
     style={{ height: Platform.OS === 'ios' ? 150 : 20, width: 100 }}
@@ -42,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   setFighterTwoRoundScore: roundScore => dispatch(setFighterTwoRoundScore(roundScore))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FightLengthPicker);
+export default connect(mapStateToProps, mapDispatchToProps)(RoundScorePicker);
