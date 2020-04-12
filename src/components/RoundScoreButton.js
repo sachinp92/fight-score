@@ -2,15 +2,35 @@ import React from 'react';
 import { Button } from 'react-native';
 import { connect } from 'react-redux';
 
-import { incrementRound } from '../store/actions';
+import { incrementRound, scoreRoundForFighterOne, scoreRoundForFighterTwo } from '../store/actions';
 
-const RoundScoreButton = ({ nextPage, currentRound, fightLength, incrementRound }) => {
-  const scoreRound = () => incrementRound();
-  const checkRound = () => currentRound === fightLength ? nextPage() : scoreRound();
+const RoundScoreButton = ({
+  nextPage,
+  currentRound,
+  fightLength,
+  incrementRound,
+  scoreRoundForFighterOne,
+  scoreRoundForFighterTwo,
+  fighterTwoCurrentRound,
+  fighterOneCurrentRound
+}) => {
+  const scoreRound = () => {
+    scoreRoundForFighterOne(fighterOneCurrentRound);
+    scoreRoundForFighterTwo(fighterTwoCurrentRound);
+    incrementRound();
+    if (currentRound === fightLength) nextPage();
+  };
 
-  return (<Button title="Score Round" onPress={() => checkRound()} />);
+  return (<Button title="Score Round" onPress={() => scoreRound()} />);
 };
 
-const mapDispatchToProps = dispatch => ({ incrementRound: () => dispatch(incrementRound()) });
+const mapStateToProps = ({ currentRound, fightLength, fighterOneCurrentRound, fighterTwoCurrentRound }) =>
+  ({ currentRound, fightLength, fighterOneCurrentRound, fighterTwoCurrentRound });
 
-export default connect(({ currentRound, fightLength }) => ({ currentRound, fightLength }), mapDispatchToProps)(RoundScoreButton);
+const mapDispatchToProps = dispatch => ({
+  incrementRound: () => dispatch(incrementRound()),
+  scoreRoundForFighterOne: fighterOneCurrentRound => dispatch(scoreRoundForFighterOne(fighterOneCurrentRound)),
+  scoreRoundForFighterTwo: fighterTwoCurrentRound => dispatch(scoreRoundForFighterTwo(fighterTwoCurrentRound))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RoundScoreButton);
