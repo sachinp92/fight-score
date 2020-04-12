@@ -3,7 +3,8 @@ import {
   SET_FIGHTER_ONE_NAME,
   SET_FIGHTER_TWO_NAME,
   SET_FIGHTER_ONE_ROUND_SCORE,
-  SET_FIGHTER_TWO_ROUND_SCORE
+  SET_FIGHTER_TWO_ROUND_SCORE,
+  INCREMENT_ROUND
 } from '../constants';
 
 export const setRounds = rounds => ({
@@ -29,4 +30,8 @@ export const setFighterOneRoundScore = roundScore => ({
 export const setFighterTwoRoundScore = roundScore => ({
   type: SET_FIGHTER_TWO_ROUND_SCORE,
   payload: roundScore
+});
+
+export const incrementRound = () => ({
+  type: INCREMENT_ROUND,
 });

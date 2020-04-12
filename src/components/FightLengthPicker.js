@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setRounds } from '../store/actions';
 
 const FightLengthPicker = ({ setRounds, fightLength }) => <>
-<Text>Number of Rounds:</Text>
+  <Text>Number of Rounds:</Text>
   <Picker
     selectedValue={fightLength}
     style={{ height: Platform.OS === 'ios' ? 150 : 20, width: 100 }}
