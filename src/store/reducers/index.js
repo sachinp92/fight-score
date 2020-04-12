@@ -1,4 +1,10 @@
-import { SET_ROUNDS, SET_FIGHTER_ONE_NAME, SET_FIGHTER_TWO_NAME, SET_FIGHTER_ONE_ROUND_SCORE, SET_FIGHTER_TWO_ROUND_SCORE } from '../constants';
+import {
+  SET_ROUNDS,
+  SET_FIGHTER_ONE_NAME,
+  SET_FIGHTER_TWO_NAME,
+  SET_FIGHTER_ONE_ROUND_SCORE,
+  SET_FIGHTER_TWO_ROUND_SCORE
+} from '../constants';
 
 const initialState = {
   fighterOneName: '',
