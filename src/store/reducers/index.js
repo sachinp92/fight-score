@@ -14,8 +14,6 @@ const initialState = {
   fighterTwoName: '',
   fighterOneRoundScores: [],
   fighterTwoRoundScores: [],
-  fighterOneTotal: 0,
-  fighterTwoTotal: 0,
   fighterOneCurrentRound: 10,
   fighterTwoCurrentRound: 8,
   currentRound: 1,
