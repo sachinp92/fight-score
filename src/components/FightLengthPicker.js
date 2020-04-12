@@ -2,14 +2,14 @@ import React from 'react';
 import { Picker, Platform } from 'react-native';
 import { connect } from 'react-redux';
 
-import { setRound } from '../store/actions';
+import { setRounds } from '../store/actions';
 
-const RoundPicker = ({setRound, fightLength}) =>
+const FightLengthPicker = ({ setRounds, fightLength }) =>
   <Picker
     selectedValue={fightLength}
     style={{ height: Platform.OS === 'ios' ? 150 : 20, width: 100 }}
     itemStyle={{ height: 150 }}
-    onValueChange={selectedRound => setRound(selectedRound)}
+    onValueChange={numberOfRounds => setRounds(numberOfRounds)}
   >
     <Picker.Item label="3" value={3} />
     <Picker.Item label="4" value={4} />
@@ -24,7 +24,6 @@ const RoundPicker = ({setRound, fightLength}) =>
   </Picker>;
 
 const mapStateToProps = ({ fightLength }) => ({ fightLength });
+const mapDispatchToProps = dispatch => ({ setRounds: numberOfRounds => dispatch(setRounds(numberOfRounds)) });
 
-const mapDispatchToProps = dispatch => ({ setRound: selectedRound => dispatch(setRound(selectedRound)) });
-
-export default connect(mapStateToProps, mapDispatchToProps)(RoundPicker);
+export default connect(mapStateToProps, mapDispatchToProps)(FightLengthPicker);

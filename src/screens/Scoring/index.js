@@ -2,14 +2,45 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { connect } from 'react-redux';
 
-const Scoring = ({ navigation, fighterOneName, fighterTwoName, fightLength }) =>
+import { setFighterOneRoundScore, setFighterTwoRoundScore } from '../../store/actions';
+import RoundScorePicker from '../../components/RoundScorePicker';
+
+const Scoring = ({
+  fighterOneName,
+  fighterTwoName,
+  fightLength,
+  fighterOneCurrentRound,
+  fighterTwoCurrentRound,
+  currentRound
+}) =>
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Fighter One: {fighterOneName}</Text>
-    <Text>Fighter Two: {fighterTwoName}</Text>
-    <Text>Fight Length: {fightLength}</Text>
-    <Button title="Score Fight" onPress={() => navigation.navigate('FinalBell')} />
+    <Text>{fighterOneName} V {fighterTwoName}</Text>
+    <Text>Round {currentRound} of {fightLength}</Text>
+    <RoundScorePicker fighter={1} />
+    <RoundScorePicker fighter={2} />
+    <Button title="Score Round" onPress={() => navigation.navigate('FinalBell')} />
   </View>;
 
-const mapStateToProps = ({ fighterOneName, fighterTwoName, fightLength }) => ({ fighterOneName, fighterTwoName, fightLength });
+const mapStateToProps = ({
+  fighterOneName,
+  fighterTwoName,
+  fightLength,
+  fighterOneCurrentScore,
+  fighterTwoCurrentScore,
+  currentRound
+}) =>
+  ({
+    fighterOneName,
+    fighterTwoName,
+    fightLength,
+    fighterOneCurrentScore,
+    fighterTwoCurrentScore,
+    currentRound
+  });
 
-export default connect(mapStateToProps)(Scoring);
+const mapDispatchToProps = dispatch => ({
+  setFighterOneRoundScore: roundScoreOne => dispatch(setFighterOneRoundScore(roundScoreOne)),
+  setFighterTwoRoundScore: roundScoreTwo => dispatch(setFighterTwoRoundScore(roundScoreTwo)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scoring);

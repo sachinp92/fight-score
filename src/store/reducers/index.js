@@ -1,4 +1,4 @@
-import { SET_ROUND, SET_FIGHTER_ONE_NAME, SET_FIGHTER_TWO_NAME } from '../types';
+import { SET_ROUNDS, SET_FIGHTER_ONE_NAME, SET_FIGHTER_TWO_NAME, SET_FIGHTER_ONE_ROUND_SCORE, SET_FIGHTER_TWO_ROUND_SCORE } from '../constants';
 
 const initialState = {
   fighterOneName: '',
@@ -7,15 +7,19 @@ const initialState = {
   fighterTwoRoundScores: [],
   fighterOneTotal: 0,
   fighterTwoTotal: 0,
+  fighterOneCurrentRound: 10,
+  fighterTwoCurrentRound: 8,
   currentRound: 1,
   fightLength: 5
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_ROUND: return { ...state, fightLength: payload };
+    case SET_ROUNDS: return { ...state, fightLength: payload };
     case SET_FIGHTER_ONE_NAME: return { ...state, fighterOneName: payload };
     case SET_FIGHTER_TWO_NAME: return { ...state, fighterTwoName: payload };
+    case SET_FIGHTER_ONE_ROUND_SCORE: return { ...state, fighterOneCurrentRound: payload };
+    case SET_FIGHTER_TWO_ROUND_SCORE: return { ...state, fighterTwoCurrentRound: payload };
     default: return state;
   }
 };
